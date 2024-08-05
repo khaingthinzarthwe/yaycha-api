@@ -6,11 +6,14 @@ const prisma = require("./PrismaClient");
 const cors = require("cors");
 app.use(cors());
 
+const { contentRouter } = require("./routers/content");
+app.use("/content", contentRouter);
+
 app.get("/info", (req, res) => {
   res.json({ msg: "Yaycha API" });
 });
 
-app.listen(8000, () => {
+const server = app.listen(8000, () => {
   console.log("Yaycha API started at 8000...");
 });
 
